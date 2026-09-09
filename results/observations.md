@@ -114,11 +114,11 @@ The Protein Data Bank was explored to examine available three-dimensional protei
 
 #### PDB Structure Record
 
-![PDB Record](../screenshots/11-PDB-record.png)
+![PDB Record](../screenshots/11-PDB-Record.png)
 
 #### PDB 3D Structure
 
-![PDB 3D Structure](../screenshots/12-PDB-3D-structure.png)
+![PDB 3D Structure](../screenshots/12-PDB-Structure.png)
 
 > **Note:** PDB entry 168L represents T4 lysozyme and is not the human LYZ protein structure. It is included as a lysozyme-related structural example observed during database exploration.
 
