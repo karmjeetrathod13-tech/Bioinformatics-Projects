@@ -2,11 +2,36 @@
 
 ## Aim
 
-To utilize Position-Specific Iterative BLAST (PSI-BLAST) to identify homologous sequences of a given query protein sequence and analyze their similarity across multiple iterations.
+To utilize Position-Specific Iterative BLAST (PSI-BLAST) to identify homologous protein sequences of a given query protein sequence and analyze their similarity through multiple iterations.
+
+---
+
+## Objectives
+
+- To understand the working principle of PSI-BLAST.
+- To retrieve a protein sequence from UniProt.
+- To perform a PSI-BLAST search using NCBI.
+- To analyze homologous protein sequences obtained during different iterations.
+- To compare E-value, percentage identity, and query coverage of the obtained sequences.
+- To observe how iterative searching identifies related protein sequences.
+
+---
+
+## Introduction
+
+PSI-BLAST stands for **Position-Specific Iterated BLAST**. It is a sequence similarity searching method used to identify homologous proteins.
+
+Standard BLAST mainly compares a query sequence with database sequences using a general scoring system. PSI-BLAST improves this process by creating a **Position-Specific Scoring Matrix (PSSM)** from the significant matches obtained in the initial search.
+
+The PSSM contains information about which amino acids are conserved at different positions in the protein sequence. This profile is then used in subsequent iterations to identify additional related sequences.
+
+In this experiment, **human Lysozyme C** was used as the query protein for PSI-BLAST analysis.
 
 ---
 
 ## Query Protein
+
+The query protein was retrieved from the **UniProt Knowledgebase**.
 
 | Parameter | Details |
 |---|---|
@@ -17,133 +42,151 @@ To utilize Position-Specific Iterative BLAST (PSI-BLAST) to identify homologous 
 | UniProt ID | LYSC_HUMAN |
 | Protein Length | 148 amino acids |
 | Protein Existence | Evidence at protein level |
-| UniProt Status | Reviewed (Swiss-Prot) |
+| Status | UniProtKB reviewed (Swiss-Prot) |
 
 ---
 
-## Introduction
+## Query Protein Sequence
 
-PSI-BLAST (Position-Specific Iterated BLAST) is a sequence similarity searching method used to identify homologous proteins, including more distantly related sequences that may not be detected easily using a single standard BLAST search.
+The FASTA sequence of human Lysozyme C was obtained from UniProt and used as the query sequence for PSI-BLAST.
 
-Unlike a conventional BLAST search, PSI-BLAST generates a Position-Specific Scoring Matrix (PSSM) from significant hits obtained during the initial search. The PSSM is then used in subsequent iterations to identify additional related sequences.
+The protein sequence contains **148 amino acids**.
 
-In this experiment, the human Lysozyme C protein sequence was used as the query for PSI-BLAST analysis.
+### UniProt Protein Record
 
----
+![UniProt Search](screenshots/01-UniProt-search.png)
 
-## Principle
+### UniProt FASTA Sequence
 
-The PSI-BLAST analysis begins with a protein sequence search against a protein sequence database. Significant matches from the first iteration are used to construct a Position-Specific Scoring Matrix (PSSM).
-
-The PSSM contains position-specific information about amino-acid conservation and substitution. It is then used in subsequent iterations to detect additional homologous sequences.
-
-The results can be evaluated using parameters such as:
-
-- E-value
-- Percentage identity
-- Query coverage
-- Alignment score
-- Newly identified homologous sequences
-
-A lower E-value indicates a more statistically significant match.
+![UniProt FASTA](screenshots/02-UniProt-FASTA.png)
 
 ---
 
-## Tools and Databases Used
+## Principle of PSI-BLAST
 
-- **UniProt** – retrieval of the query protein sequence
-- **NCBI BLAST / PSI-BLAST** – iterative protein sequence similarity search
-- **ClusteredNR (clustered_nr)** – database selected in the PSI-BLAST search
-- **Protein FASTA sequence** – query input
+PSI-BLAST works through an iterative sequence-searching process.
+
+1. The query protein sequence is searched against a protein database.
+2. Significant sequence matches are identified in the first iteration.
+3. The significant matches are used to construct a **Position-Specific Scoring Matrix (PSSM)**.
+4. The PSSM is used for the next iteration of the search.
+5. Additional homologous sequences can be identified in subsequent iterations.
+6. The process can be repeated until the search reaches convergence or no substantial new sequences are detected.
+
+Important parameters used to evaluate the results include:
+
+- **E-value:** Indicates the statistical significance of a sequence match. Lower values indicate more significant matches.
+- **Percentage Identity:** Indicates the percentage of identical amino acids between the query and the matching sequence.
+- **Query Coverage:** Indicates how much of the query sequence is included in the alignment.
+- **Score:** Represents the quality of the sequence alignment.
 
 ---
 
-## PSI-BLAST Search Parameters
+## Tools and Database Used
+
+### Tools
+
+- UniProt
+- NCBI BLAST
+- PSI-BLAST
+
+### Database
+
+- **ClusteredNR (clustered_nr)**
+
+### Input
+
+- Protein FASTA sequence of human Lysozyme C
+
+---
+
+## PSI-BLAST Parameters
+
+The following settings were used in the PSI-BLAST search:
 
 | Parameter | Value |
 |---|---|
-| Search Program | PSI-BLAST |
-| Query | Lysozyme C |
+| Program | PSI-BLAST |
+| Query Protein | Lysozyme C |
 | Accession | P61626 |
 | Organism | Homo sapiens |
 | Database | ClusteredNR (clustered_nr) |
 | Search Type | Protein-protein BLAST |
-| Number of Iterations | 3 |
+| Iterations | 3 |
 | Number of Sequences | 500 |
 
 ---
 
 ## Procedure
 
-### Step 1: Retrieval of Query Protein
+### Step 1: Retrieve the Query Protein
 
-The human Lysozyme C protein was searched in the UniProt database.
+The protein **Lysozyme C** was searched in the UniProt database.
 
-The selected protein record was:
+The selected UniProt entry was:
 
-- **Protein:** Lysozyme C
-- **Gene:** LYZ
-- **Organism:** Homo sapiens
-- **UniProt Accession:** P61626
-- **Protein length:** 148 amino acids
+**P61626 – LYSC_HUMAN**
 
-Screenshot:
+The record showed that the protein is Lysozyme C from *Homo sapiens* and contains 148 amino acids.
 
-![UniProt Protein Record](screenshots/01-UniProt-search.png)
+The FASTA sequence was obtained from the UniProt record.
 
 ---
 
-### Step 2: Retrieval of FASTA Sequence
+### Step 2: Obtain the FASTA Sequence
 
-The FASTA sequence of human Lysozyme C was obtained from the UniProt record.
+The FASTA sequence of Lysozyme C was copied from the UniProt entry.
 
-The sequence contains **148 amino acids** and was used as the query sequence for PSI-BLAST.
-
-Screenshot:
-
-![UniProt FASTA Sequence](screenshots/02-UniProt-FASTA.png)
+The sequence was used as the input query for the PSI-BLAST search.
 
 ---
 
-### Step 3: PSI-BLAST Input
+### Step 3: Enter the Query Sequence in NCBI BLAST
 
-The Lysozyme C protein sequence was entered into the NCBI BLAST interface.
+The Lysozyme C FASTA sequence was entered into the NCBI BLAST protein search interface.
 
-The **PSI-BLAST (Position-Specific Iterated BLAST)** option was selected. The search database shown in the submitted search was **ClusteredNR (clustered_nr)**.
+The **PSI-BLAST (Position-Specific Iterated BLAST)** algorithm was selected.
 
-Screenshot:
+The database displayed in the search interface was **ClusteredNR (clustered_nr)**.
 
 ![PSI-BLAST Input](screenshots/03-PSI-BLAST-input.png)
 
 ---
 
-## PSI-BLAST Results
+# PSI-BLAST Results
 
-### Iteration 1
+## Iteration 1
 
-The first PSI-BLAST iteration produced significant matches to Lysozyme C and related lysozyme sequences.
+The first PSI-BLAST iteration produced significant sequence matches to human Lysozyme C.
 
-Some representative hits observed in the results include:
+Several highly similar lysozyme sequences were identified from different organisms.
+
+Some representative results observed were:
 
 | Protein | Organism | Query Coverage | E-value | Percentage Identity |
 |---|---|---:|---:|---:|
 | Lysozyme C precursor | *Gorilla gorilla gorilla* | 100% | 3e-103 | 99.32% |
 | Lysozyme C precursor | *Macaca mulatta* | 100% | 2e-94 | 88.51% |
-| Mdc-hly hybrid protein | Synthetic construct | 88% | 1e-91 | 100.00% |
+| Mdc-hly hybrid protein, partial | Synthetic construct | 88% | 1e-91 | 100.00% |
 | Predicted Lysozyme C | *Chrysochloris asiatica* | 100% | 1e-91 | 86.49% |
 | Lysozyme C | *Taphozous melanopogon* | 100% | 3e-91 | 83.78% |
+| Chain A, LYSOZYME | *Homo sapiens* | 88% | 1e-90 | 99.23% |
+| c-type lysozyme | *Leptonycteris yerbabuenae* | 100% | 2e-90 | 86.49% |
+| Lysozyme C | *Piliocolobus tephrosceles* | 100% | 4e-90 | 82.43% |
 
-The results showed high sequence similarity between human Lysozyme C and several homologous lysozyme proteins.
+The results showed high sequence similarity and strong statistical significance among the major hits.
 
-Screenshot:
+### Iteration 1 Screenshot
 
-![PSI-BLAST Iteration 1](screenshots/04-PSI-BLAST-iteration-1.png)
+![PSI-BLAST Iteration 1](screenshots/04-PSI-BLAST-iteration%201.png)
 
 ---
 
-### Iteration 2
+## Iteration 2
 
-The second iteration generated additional significant matches and refined the sequence profile using the PSSM generated during the PSI-BLAST analysis.
+In the second iteration, the PSSM generated from the PSI-BLAST analysis was used to identify related sequences.
+
+The results continued to show highly significant matches with high query coverage and high sequence identity.
 
 Representative results included:
 
@@ -154,110 +197,171 @@ Representative results included:
 | Predicted Lysozyme C | *Chrysochloris asiatica* | 100% | 8e-115 | 86.49% |
 | Lysozyme C precursor | *Macaca mulatta* | 100% | 3e-114 | 88.51% |
 | Lysozyme C | *Rhinopoma microphyllum* | 100% | 5e-113 | 80.41% |
+| Lysozyme C | *Talpa occidentalis* | 100% | 7e-113 | 81.08% |
+| Lysozyme C precursor | *Gorilla gorilla gorilla* | 100% | 1e-112 | 99.32% |
+| Predicted Lysozyme C | *Elephantulus edwardii* | 100% | 5e-112 | 78.38% |
 
-The results continued to show highly significant similarity among lysozyme sequences from different organisms.
+The second iteration continued to identify highly conserved Lysozyme C-related sequences.
 
-Screenshot:
+### Iteration 2 Screenshot
 
-![PSI-BLAST Iteration 2](screenshots/05-PSI-BLAST-iteration-2.png)
+![PSI-BLAST Iteration 2](screenshots/05-PSI-BLAST-iteration%202.png)
 
 ---
 
-### Iteration 3
+## Iteration 3
 
-The third iteration produced clustered sequence results representing multiple organisms.
+The third PSI-BLAST iteration displayed clustered sequence results representing several organisms.
 
-Representative results included:
+The results included sequences from groups such as primates, bats, insectivores, rodents, and other mammals.
 
-| Cluster Representative | Query Coverage | E-value | Percentage Identity |
+Representative results observed were:
+
+| Cluster Representative Sequence | Query Coverage | E-value | Percentage Identity |
 |---|---:|---:|---:|
-| Lysozyme C - *Taphozous melanopogon* | 100% | 6e-115 | 83.78% |
-| c-type lysozyme - *Leptonycteris yerbabuenae* | 100% | 2e-114 | 86.49% |
-| Predicted Lysozyme C - *Chrysochloris asiatica* | 100% | 1e-112 | 86.49% |
-| Lysozyme C precursor - *Macaca mulatta* | 100% | 1e-111 | 88.51% |
-| Lysozyme C - *Rhinopoma microphyllum* | 100% | 3e-111 | 80.41% |
-| Lysozyme C - *Talpa occidentalis* | 100% | 9e-111 | 81.08% |
+| Lysozyme C – *Taphozous melanopogon* | 100% | 6e-115 | 83.78% |
+| c-type lysozyme – *Leptonycteris yerbabuenae* | 100% | 2e-114 | 86.49% |
+| Predicted Lysozyme C – *Chrysochloris asiatica* | 100% | 1e-112 | 86.49% |
+| Lysozyme C precursor – *Macaca mulatta* | 100% | 1e-111 | 88.51% |
+| Lysozyme C – *Rhinopoma microphyllum* | 100% | 3e-111 | 80.41% |
+| Lysozyme C – *Talpa occidentalis* | 100% | 9e-111 | 81.08% |
+| Predicted Lysozyme C – *Elephantulus edwardii* | 100% | 2e-110 | 78.38% |
+| Lysozyme C-1 – *Cricetulus griseus* | 100% | 5e-110 | 75.00% |
+| Lysozyme C precursor – *Gorilla gorilla gorilla* | 100% | 9e-110 | 99.32% |
+| Lysozyme C – *Octodon degus* | 100% | 1e-109 | 83.11% |
 
-The third iteration continued to identify strongly conserved lysozyme-related sequences across different organisms.
+The third iteration showed continued detection of strongly conserved Lysozyme C-related sequences.
 
-Screenshot:
+### Iteration 3 Screenshot
 
-![PSI-BLAST Iteration 3](screenshots/06-PSI-BLAST-iteration-3.png)
-
----
-
-## Observations
-
-The PSI-BLAST analysis showed that human Lysozyme C has highly similar homologous sequences in several organisms.
-
-The observed results showed:
-
-- High query coverage, generally around **100%** for the major hits.
-- High percentage identity, with several sequences showing more than **80% identity**.
-- Very low E-values, indicating statistically significant similarities.
-- Homologous lysozyme sequences were identified from different organisms including primates, bats, insectivores, rodents and other mammals.
-- Across successive iterations, the PSI-BLAST profile continued to identify significant lysozyme-related sequences.
+![PSI-BLAST Iteration 3](screenshots/06-PSI-BLAST-iteration%203.png)
 
 ---
 
-## Interpretation
+# Observations
 
-The PSI-BLAST results demonstrate strong conservation of the Lysozyme C protein sequence across different organisms.
+The PSI-BLAST analysis produced significant matches in all three iterations.
 
-The high sequence identities and very low E-values observed in the results support the presence of homologous lysozyme proteins in multiple species.
+### Major observations
 
-The progression through three PSI-BLAST iterations allowed the search to use the generated position-specific profile to identify and organize additional related sequences.
-
----
-
-## Conserved Domains
-
-The conserved-domain screenshot is **not included in the screenshots provided for this experiment**.
-
-Therefore, no specific conserved-domain result is reported here.
-
-A conserved-domain analysis can be added after obtaining the corresponding NCBI conserved-domain/Graphic Summary result.
-
----
-
-## Conclusion
-
-PSI-BLAST was successfully performed using human Lysozyme C (P61626) as the query protein.
-
-The analysis identified numerous highly similar lysozyme-related sequences from different organisms. The low E-values, high percentage identities and high query coverage indicate strong sequence conservation and support the homologous relationship between the identified proteins.
-
-The three PSI-BLAST iterations demonstrated how iterative profile-based searching can be used to analyze homologous protein sequences.
+- The query protein was **human Lysozyme C (P61626)**.
+- The query sequence contained **148 amino acids**.
+- The search was performed using **PSI-BLAST**.
+- The selected database was **ClusteredNR (clustered_nr)**.
+- Three PSI-BLAST iterations were performed.
+- Major hits showed **high query coverage**, commonly 100%.
+- Many sequences showed **more than 80% sequence identity**.
+- Very low E-values were observed for the major hits.
+- Lysozyme C-related sequences were identified from several different organisms.
+- The results included organisms from groups such as primates, bats, rodents, insectivores, and other mammals.
+- The presence of high sequence identity and very low E-values indicates strong similarity between the query protein and the identified sequences.
 
 ---
 
-## Screenshots
+# Analysis of E-value, Identity and Query Coverage
 
-The following screenshots document the workflow:
+### E-value
 
-1. UniProt Lysozyme C protein record
-2. UniProt FASTA sequence
-3. PSI-BLAST input
-4. PSI-BLAST iteration 1
-5. PSI-BLAST iteration 2
-6. PSI-BLAST iteration 3
+The observed E-values were extremely low, for example:
+
+- `3e-103`
+- `2e-94`
+- `3e-91`
+- `2e-116`
+- `1e-112`
+- `6e-115`
+
+These low E-values indicate that the observed sequence similarities are statistically significant.
+
+### Percentage Identity
+
+The major hits showed high percentage identity.
+
+For example:
+
+- *Gorilla gorilla gorilla*: **99.32%**
+- *Macaca mulatta*: **88.51%**
+- *Chrysochloris asiatica*: **86.49%**
+- *Taphozous melanopogon*: **83.78%**
+- *Cricetulus griseus*: **75.00%**
+
+This indicates that Lysozyme C is highly conserved among the analyzed organisms.
+
+### Query Coverage
+
+Most of the major hits showed **100% query coverage**, meaning that the complete 148-amino-acid query protein was covered by the alignment.
 
 ---
 
-## References
+# Interpretation
 
-- UniProt Knowledgebase – Lysozyme C, P61626
-- NCBI BLAST – PSI-BLAST
-- NCBI Protein Database
+The PSI-BLAST results demonstrate that human Lysozyme C has strong sequence similarity with Lysozyme C and related lysozyme proteins from multiple organisms.
+
+The high percentage identities, high query coverage, and very low E-values indicate that these sequences are strongly related to the human Lysozyme C query.
+
+The results obtained across three iterations also demonstrate how PSI-BLAST uses a position-specific profile to continue searching for related sequences.
+
+The presence of conserved Lysozyme C sequences across different organisms suggests that important regions of this protein have been conserved during evolution.
 
 ---
 
-## Experiment Information
+# Conserved Domain Analysis
 
-**Experiment:** 02 – PSI-BLAST  
-**Query Protein:** Lysozyme C  
-**Gene:** LYZ  
-**Organism:** Homo sapiens  
-**UniProt Accession:** P61626  
-**Program:** PSI-BLAST  
-**Database:** ClusteredNR (clustered_nr)  
-**Iterations:** 3
+No separate conserved-domain result screenshot was included among the six screenshots provided for this experiment.
+
+Therefore, no specific conserved-domain result is reported in this README.
+
+If a conserved-domain result is obtained later, it can be added as an additional screenshot and observation.
+
+---
+
+# Conclusion
+
+PSI-BLAST analysis was successfully performed using **human Lysozyme C (P61626)** as the query protein.
+
+The three iterations identified numerous highly similar Lysozyme C-related sequences from different organisms. The major hits showed high query coverage, high percentage identity, and very low E-values.
+
+The results demonstrate that Lysozyme C is a highly conserved protein among the organisms identified in the PSI-BLAST search.
+
+This experiment also demonstrated the usefulness of PSI-BLAST for identifying homologous protein sequences through iterative profile-based sequence searching.
+
+---
+
+# Screenshots
+
+The experiment is documented using the following screenshots:
+
+1. **UniProt Protein Search**
+   - `01-UniProt-search.png`
+
+2. **UniProt FASTA Sequence**
+   - `02-UniProt-FASTA.png`
+
+3. **PSI-BLAST Input**
+   - `03-PSI-BLAST-input.png`
+
+4. **PSI-BLAST Iteration 1**
+   - `04-PSI-BLAST-iteration 1.png`
+
+5. **PSI-BLAST Iteration 2**
+   - `05-PSI-BLAST-iteration 2.png`
+
+6. **PSI-BLAST Iteration 3**
+   - `06-PSI-BLAST-iteration 3.png`
+
+---
+
+# Project Structure
+
+```text
+02-PSI-BLAST/
+│
+├── README.md
+│
+└── screenshots/
+    ├── 01-UniProt-search.png
+    ├── 02-UniProt-FASTA.png
+    ├── 03-PSI-BLAST-input.png
+    ├── 04-PSI-BLAST-iteration 1.png
+    ├── 05-PSI-BLAST-iteration 2.png
+    └── 06-PSI-BLAST-iteration 3.png
