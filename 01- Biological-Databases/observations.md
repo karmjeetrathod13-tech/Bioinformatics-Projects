@@ -130,5 +130,13 @@ The Protein Data Bank was explored to examine available three-dimensional protei
 |---|---|
 | NCBI GenBank | Human LYZ mRNA sequence |
 | UniProt | Human Lysozyme C protein information |
-| KEGG | Glycolysis / Gluconeogenesis pathway |
-| PDB | T4 lysozyme three-dimensional structure |
+| KEGG | Glycolysis / Gluconeogenesis pathway information |
+| PDB | Lysozyme-related 3D structural information |
+
+---
+
+## Conclusion
+
+Different biological databases were explored to retrieve complementary information about the LYZ gene and Lysozyme C protein. NCBI GenBank provided nucleotide sequence information, UniProt provided protein-level information, KEGG provided pathway information, and PDB provided three-dimensional structural information related to lysozyme.
+
+The experiment demonstrated how different biological databases can be used together to obtain sequence, protein, pathway, and structural information for bioinformatics analysis.
